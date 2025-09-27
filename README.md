@@ -18,10 +18,47 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Instalacion de sweetalert2 
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+npm install sweetalert2
+Lo eh instalado para hacer alertas mas interactivas y esteticas con la pagina
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## DESICIONES
+
+-Principalmente en el Crud , la parte del post la hice en otro componente para seguir la recomendacion (dada en el correo electronico), no obstante el resto del crud (ver,borrar,editar), lo hice en forma de modales con valores booleanos para asi no crear componentes inecesarios.
+
+
+## ESTRUCTURA
+src/
+└── app/
+├── features/
+│ └── pagos/
+│ ├── components/
+│ │ └── pago-form/        → Componente para crear un nuevo pago (Form reactivo)
+│ │ ├── pago-form.component.ts
+│ │ ├── pago-form.component.html
+│ │ ├── pago-form.component.css
+│ │ └── pago-form.component.spec.ts
+│ └── pages/
+│ └── pagos-list/          → Página que lista todos los pagos (e incluir parte del CRUD)
+│ ├── pagos-list.component.ts
+│ ├── pagos-list.component.html
+│ ├── pagos-list.component.css
+│ └── pagos-list.component.spec.ts
+└── services/ → Servicios que manejan lógica y datos
+├── pagos.service.ts        →  Servicio para CRUD de pagos
+├── pagos.service.spec.ts
+├── access.service.ts       →     Servicio para control de accesos/permisos
+└── access.service.spec.ts
+
+## POR MEJORAR
+-Uso de trackBy en tabla
+
+
+# Instalacion de PrimeNG y dependencias básicas
+npm i primeng primeicons
+
+
+## para subir a github pages
+npm install -g angular-cli-ghpages

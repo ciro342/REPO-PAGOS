@@ -1,0 +1,188 @@
+<div *ngIf="puedeCrearPago" class="min-h-screen bg-gray-100 py-10 relative">
+
+<button pButton type="button" icon="pi pi-arrow-left"
+        class="absolute top-4 left-4 p-button-rounded p-button-text"
+        (click)="volver()">
+</button>
+
+<div class="p-8 bg-white rounded-2xl shadow-lg max-w-3xl mx-auto">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Registrar Pago</h2>
+
+  <form [formGroup]="pagoForm" (ngSubmit)="guardar()" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Fecha *</label>
+        <p-calendar 
+        formControlName="fecha" 
+        dateFormat="yy-mm-dd" 
+        styleClass="w-full"
+        inputStyleClass="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 text-sm"
+        placeholder="Seleccione una fecha">
+        </p-calendar>
+      <small *ngIf="pagoForm.get('fecha')?.invalid && pagoForm.get('fecha')?.touched"
+                class="text-red-500 text-xs mt-1 block">La fecha es obligatoria</small>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Empresa *</label>
+        <input 
+        pInputText 
+        formControlName="empresa" 
+        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 text-sm placeholder-gray-400"
+        placeholder="Nombre de la empresa" />
+      <small *ngIf="pagoForm.get('empresa')?.invalid && pagoForm.get('empresa')?.touched"
+        class="text-red-500 text-xs mt-1 block">La empresa es obligatoria</small>
+    </div>
+
+    <!-- Tercero -->
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Tercero *</label>
+      <input 
+        pInputText 
+        formControlName="tercero" 
+        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 text-sm placeholder-gray-400"
+        placeholder="Nombre del tercero" />
+      <small *ngIf="pagoForm.get('tercero')?.invalid && pagoForm.get('tercero')?.touched"
+            class="text-red-500 text-xs mt-1 block">Mínimo 3 caracteres</small>
+    </div>
+
+   <div class="space-y-2">
+  <label class="block text-sm font-semibold text-gray-700 mb-2">
+    Valor Operación *
+  </label>
+  
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+      <span class="text-gray-500 font-medium">$</span>
+    </div>
+        <input type="number" 
+           formControlName="valorOperacion"
+           class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 text-sm placeholder-gray-400"
+           placeholder="Ej: 1500000"
+           min="1"
+           step="1000">
+    
+    <!-- Indicador de moneda -->
+    <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+      <span class="text-xs text-gray-400 font-medium">COP</span>
+    </div>
+  </div>
+  <div class="text-xs text-gray-500 mt-1" 
+       *ngIf="pagoForm.get('valorOperacion')?.value && pagoForm.get('valorOperacion')?.value > 0">
+    Valor: {{ pagoForm.get('valorOperacion')?.value | currency:'COP':'symbol':'1.0-0' }}
+  </div>
+    <small *ngIf="pagoForm.get('valorOperacion')?.invalid && pagoForm.get('valorOperacion')?.touched"
+        class="text-red-500 text-xs mt-1 block flex items-center gap-1">
+    <i class="pi pi-exclamation-triangle"></i>
+    El valor debe ser mayor a 0
+  </small>
+</div>
+
+    <!-- Estado Pago -->
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Estado *</label>
+      <p-dropdown 
+        [options]="estados" 
+        formControlName="estadoPago" 
+        placeholder="Seleccione estado" 
+        styleClass="w-full"
+        panelStyleClass="shadow-xl border-0 rounded-xl"
+        [style]="{'width': '100%'}"
+        inputStyleClass="px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 transition-all duration-200 text-sm">
+      </p-dropdown>
+      <small *ngIf="pagoForm.get('estadoPago')?.invalid && pagoForm.get('estadoPago')?.touched"
+            class="text-red-500 text-xs mt-1 block">Seleccione un estado</small>
+    </div>
+
+    <!-- Forma de Pago -->
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Forma de Pago</label>
+      <p-dropdown 
+        [options]="formasPago" 
+        formControlName="formaPago" 
+        placeholder="Seleccione forma" 
+        styleClass="w-full"
+        panelStyleClass="shadow-xl border-0 rounded-xl"
+        [style]="{'width': '100%'}"
+        inputStyleClass="px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 transition-all duration-200 text-sm">
+      </p-dropdown>
+    </div>
+
+    <!-- Tiene presupuesto -->
+    <div class="flex items-center space-x-3 col-span-1 md:col-span-2 p-4 bg-gray-50 rounded-xl">
+      <p-checkbox 
+        formControlName="tienePresupuesto" 
+        binary="true"
+        styleClass="rounded-lg">
+      </p-checkbox>
+      <label class="text-sm font-medium text-gray-700 cursor-pointer select-none">Tiene presupuesto</label>
+    </div>
+
+    <!-- Rubro -->
+    <div class="md:col-span-2 space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Rubro</label>
+      <input 
+        pInputText 
+        formControlName="rubro" 
+        class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 transition-all duration-200 text-sm placeholder-gray-400"
+        placeholder="Especifique el rubro" />
+    </div>
+
+    <!-- Archivos -->
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Factura</label>
+      <div class="border-2 border-dashed border-gray-200 rounded-xl p-4 hover:border-green-400 transition-colors duration-200">
+        <p-fileUpload 
+          mode="basic" 
+          chooseLabel="📄 Seleccionar factura"
+          styleClass="p-button-outlined p-button-sm"
+          [style]="{'border': 'none', 'background': 'transparent'}"
+          (onSelect)="pagoForm.patchValue({ factura: $event.files[0].name })">
+        </p-fileUpload>
+        <small *ngIf="pagoForm.value.factura" 
+              class="text-green-600 text-xs mt-2 block font-medium">✅ Archivo: {{ pagoForm.value.factura }}</small>
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <label class="block text-sm font-semibold text-gray-700 mb-2">Soporte</label>
+      <div class="border-2 border-dashed border-gray-200 rounded-xl p-4 hover:border-green-400 transition-colors duration-200">
+        <p-fileUpload 
+          mode="basic" 
+          chooseLabel="📎 Seleccionar soporte"
+          styleClass="p-button-outlined p-button-sm"
+          [style]="{'border': 'none', 'background': 'transparent'}"
+          (onSelect)="pagoForm.patchValue({ soporte: $event.files[0].name })">
+        </p-fileUpload>
+        <small *ngIf="pagoForm.value.soporte" 
+        class="text-green-600 text-xs mt-2 block font-medium">✅ Archivo: {{ pagoForm.value.soporte }}</small>
+    </div>
+    </div>
+
+    <!-- Botón Guardar -->
+    <div class="md:col-span-2 pt-6">
+        <button 
+        pButton 
+        type="submit" 
+        label="💾 Guardar Pago"
+        class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        [disabled]="pagoForm.invalid">
+        </button>
+    </div>
+    </form>
+</div>
+
+</div>
+
+<div *ngIf="!puedeCrearPago" class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Acceso Denegado</h2>
+    <p class="text-gray-600 mb-6">No tienes permiso para crear pagos.</p>
+    <button 
+      pButton 
+      type="button" 
+      label="Volver"
+      class="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+      (click)="volver()">
+    </button>
+  </div>

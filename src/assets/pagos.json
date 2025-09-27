@@ -1,0 +1,929 @@
+[
+    {
+        "id": "P-0001",
+        "fecha": "2025-08-01",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "COMBUSTIBLES",
+        "tercero": "ESTACION ABC S.A.S.",
+        "valorOperacion": 1250000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-01T09:30:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0002",
+        "fecha": "2025-08-02",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "MANTENIMIENTO",
+        "tercero": "TALLERES UNIDOS LTDA.",
+        "valorOperacion": 850000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura002.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgarcia", "fecha": "2025-08-02T10:15:00Z", "nota": "Creado" },
+            { "usuario": "mgarcia", "fecha": "2025-08-03T14:00:00Z", "nota": "Pago confirmado" }
+        ]
+    },
+    {
+        "id": "P-0003",
+        "fecha": "2025-08-03",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "COMBUSTIBLES",
+        "tercero": "GASOLINERA DEL SUR S.A.",
+        "valorOperacion": 2000000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lrodriguez", "fecha": "2025-08-03T08:45:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0004",
+        "fecha": "2025-08-04",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "INSUMOS",
+        "tercero": "PROVEEDORES NACIONALES S.A.S.",
+        "valorOperacion": 3500000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura004.pdf",
+        "soporteUrl": "https://example.com/soporte004.pdf",
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-04T11:20:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-05T09:00:00Z", "nota": "Factura cargada" }
+        ]
+    },
+    {
+        "id": "P-0005",
+        "fecha": "2025-08-05",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "REPUESTOS",
+        "tercero": "AUTO PARTES LTDA.",
+        "valorOperacion": 670000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-05T13:10:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0006",
+        "fecha": "2025-08-06",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES RAPIDOS S.A.",
+        "valorOperacion": 1800000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura006.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgarcia", "fecha": "2025-08-06T15:30:00Z", "nota": "Creado" },
+            { "usuario": "mgarcia", "fecha": "2025-08-07T10:00:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0007",
+        "fecha": "2025-08-07",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA CREATIVA S.A.S.",
+        "valorOperacion": 2500000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lrodriguez", "fecha": "2025-08-07T09:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0008",
+        "fecha": "2025-08-08",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "COMBUSTIBLES",
+        "tercero": "ESTACION NORTE S.A.",
+        "valorOperacion": 1450000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura008.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-08T12:00:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-09T08:30:00Z", "nota": "Pago confirmado" }
+        ]
+    },
+    {
+        "id": "P-0009",
+        "fecha": "2025-08-09",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "ALMACENAMIENTO",
+        "tercero": "BODEGAS SEGURAS LTDA.",
+        "valorOperacion": 3000000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-09T14:20:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0010",
+        "fecha": "2025-08-10",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "INSUMOS",
+        "tercero": "DISTRIBUIDORA GLOBAL S.A.",
+        "valorOperacion": 4200000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura010.pdf",
+        "soporteUrl": "https://example.com/soporte010.pdf",
+        "trazabilidad": [
+            { "usuario": "mgarcia", "fecha": "2025-08-10T10:10:00Z", "nota": "Creado" },
+            { "usuario": "mgarcia", "fecha": "2025-08-11T09:00:00Z", "nota": "Factura cargada" }
+        ]
+    },
+    {
+        "id": "P-0011",
+        "fecha": "2025-08-11",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "REPUESTOS",
+        "tercero": "REPUESTOS ELITE S.A.S.",
+        "valorOperacion": 950000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lrodriguez", "fecha": "2025-08-11T11:30:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0012",
+        "fecha": "2025-08-12",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES VELOZ S.A.",
+        "valorOperacion": 2100000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura012.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-12T13:45:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-13T10:00:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0013",
+        "fecha": "2025-08-13",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "MARKETING DIGITAL S.A.S.",
+        "valorOperacion": 2800000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-13T09:15:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0014",
+        "fecha": "2025-08-14",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "COMBUSTIBLES",
+        "tercero": "ESTACION CENTRAL S.A.",
+        "valorOperacion": 1300000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura014.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgarcia", "fecha": "2025-08-14T10:30:00Z", "nota": "Creado" },
+            { "usuario": "mgarcia", "fecha": "2025-08-15T08:45:00Z", "nota": "Pago confirmado" }
+        ]
+    },
+    {
+        "id": "P-0015",
+        "fecha": "2025-08-15",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "ALMACENAMIENTO",
+        "tercero": "BODEGAS NACIONALES LTDA.",
+        "valorOperacion": 3200000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lrodriguez", "fecha": "2025-08-15T12:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0016",
+        "fecha": "2025-08-16",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "INSUMOS",
+        "tercero": "SUMINISTROS GLOBALES S.A.",
+        "valorOperacion": 4000000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura016.pdf",
+        "soporteUrl": "https://example.com/soporte016.pdf",
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-16T09:50:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-17T10:00:00Z", "nota": "Factura cargada" }
+        ]
+    },
+    {
+        "id": "P-0017",
+        "fecha": "2025-08-17",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "REPUESTOS",
+        "tercero": "PARTES Y REPUESTOS LTDA.",
+        "valorOperacion": 780000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-17T11:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0018",
+        "fecha": "2025-08-18",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES EFICIENTES S.A.",
+        "valorOperacion": 1900000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura018.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgarcia", "fecha": "2025-08-18T14:00:00Z", "nota": "Creado" },
+            { "usuario": "mgarcia", "fecha": "2025-08-19T09:30:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0019",
+        "fecha": "2025-08-19",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA PUBLICITARIA LTDA.",
+        "valorOperacion": 2600000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lrodriguez", "fecha": "2025-08-19T10:15:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0020",
+        "fecha": "2025-08-20",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "COMBUSTIBLES",
+        "tercero": "ESTACION ORIENTE S.A.",
+        "valorOperacion": 1400000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura020.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-20T11:45:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-21T08:00:00Z", "nota": "Pago confirmado" }
+        ]
+    },
+    {
+        "id": "P-0021",
+        "fecha": "2025-08-21",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "ALMACENAMIENTO",
+        "tercero": "BODEGAS MODERNAS S.A.",
+        "valorOperacion": 3100000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-21T13:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0022",
+        "fecha": "2025-08-22",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "INSUMOS",
+        "tercero": "PROVEEDORES ELITE S.A.S.",
+        "valorOperacion": 3800000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura022.pdf",
+        "soporteUrl": "https://example.com/soporte022.pdf",
+        "trazabilidad": [
+            { "usuario": "mgarcia", "fecha": "2025-08-22T10:30:00Z", "nota": "Creado" },
+            { "usuario": "mgarcia", "fecha": "2025-08-23T09:00:00Z", "nota": "Factura cargada" }
+        ]
+    },
+    {
+        "id": "P-0023",
+        "fecha": "2025-08-23",
+        "empresa": "SESPA",
+        "areaOperacion": "TRANSPORTES",
+        "rubro": "REPUESTOS",
+        "tercero": "AUTO REPUESTOS S.A.",
+        "valorOperacion": 720000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lrodriguez", "fecha": "2025-08-23T12:15:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0024",
+        "fecha": "2025-08-24",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES NACIONALES S.A.",
+        "valorOperacion": 2000000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura024.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-24T14:30:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-25T09:15:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0025",
+        "fecha": "2025-08-25",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA VISUAL S.A.S.",
+        "valorOperacion": 2700000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-25T10:00:00Z", "nota": "Creado" }
+        ]
+    },
+    
+    {
+        "id": "P-0026",
+        "fecha": "2025-08-26",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "CARGAS RAPIDAS LTDA.",
+        "valorOperacion": 1800000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura026.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-08-26T08:45:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-08-26T15:20:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0027",
+        "fecha": "2025-08-27",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "MARKETING DIGITAL S.A.",
+        "valorOperacion": 3200000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lramirez", "fecha": "2025-08-27T09:30:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0028",
+        "fecha": "2025-08-28",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "ALMACENAMIENTO",
+        "rubro": "BODEGAJE",
+        "tercero": "ALMACENES UNIDOS S.A.",
+        "valorOperacion": 1500000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura028.pdf",
+        "soporteUrl": "https://example.com/soporte028.pdf",
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-08-28T11:00:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-08-28T16:45:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0029",
+        "fecha": "2025-08-29",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PRODUCTOS",
+        "tercero": "DISTRIBUIDORA GLOBAL S.A.S.",
+        "valorOperacion": 5000000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "INGRESO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-08-29T12:15:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0030",
+        "fecha": "2025-08-30",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES ELITE S.A.",
+        "valorOperacion": 2200000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura030.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-08-30T07:30:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-08-30T14:10:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0031",
+        "fecha": "2025-08-31",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA CREATIVA LTDA.",
+        "valorOperacion": 2800000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lramirez", "fecha": "2025-08-31T10:20:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0032",
+        "fecha": "2025-09-01",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "MANTENIMIENTO",
+        "tercero": "SERVICIOS TECNICOS S.A.",
+        "valorOperacion": 1200000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura032.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-09-01T09:00:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-09-01T15:30:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0033",
+        "fecha": "2025-09-02",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PRODUCTOS",
+        "tercero": "CLIENTE PREMIUM S.A.S.",
+        "valorOperacion": 4500000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "INGRESO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-09-02T11:45:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0034",
+        "fecha": "2025-09-03",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES VELOZ S.A.",
+        "valorOperacion": 1900000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura034.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-09-03T08:00:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-09-03T14:50:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0035",
+        "fecha": "2025-09-04",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA DIGITAL 360 S.A.",
+        "valorOperacion": 3000000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lramirez", "fecha": "2025-09-04T10:10:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0036",
+        "fecha": "2025-09-05",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "ALMACENAMIENTO",
+        "rubro": "BODEGAJE",
+        "tercero": "BODEGAS SEGURAS S.A.",
+        "valorOperacion": 1700000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura036.pdf",
+        "soporteUrl": "https://example.com/soporte036.pdf",
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-09-05T09:15:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-09-05T16:00:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0037",
+        "fecha": "2025-09-06",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PRODUCTOS",
+        "tercero": "COMERCIALIZADORA SUR S.A.",
+        "valorOperacion": 6000000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "INGRESO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-09-06T12:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0038",
+        "fecha": "2025-09-07",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES NORTE S.A.",
+        "valorOperacion": 2100000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura038.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-09-07T07:45:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-09-07T14:30:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0039",
+        "fecha": "2025-09-08",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "PUBLICIDAD EFECTIVA S.A.S.",
+        "valorOperacion": 2600000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lramirez", "fecha": "2025-09-08T09:50:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0040",
+        "fecha": "2025-09-09",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "MANTENIMIENTO",
+        "tercero": "MECANICOS ASOCIADOS S.A.",
+        "valorOperacion": 1400000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura040.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-09-09T08:30:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-09-09T15:15:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0041",
+        "fecha": "2025-09-10",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PRODUCTOS",
+        "tercero": "CLIENTE NACIONAL S.A.",
+        "valorOperacion": 5200000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "INGRESO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-09-10T11:30:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0042",
+        "fecha": "2025-09-11",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES SUR S.A.",
+        "valorOperacion": 2300000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura042.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-09-11T07:15:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-09-11T14:00:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0043",
+        "fecha": "2025-09-12",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA PROMO S.A.S.",
+        "valorOperacion": 2900000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lramirez", "fecha": "2025-09-12T10:40:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0044",
+        "fecha": "2025-09-13",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "ALMACENAMIENTO",
+        "rubro": "BODEGAJE",
+        "tercero": "ALMACENES MODERNOS S.A.",
+        "valorOperacion": 1600000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura044.pdf",
+        "soporteUrl": "https://example.com/soporte044.pdf",
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-09-13T09:00:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-09-13T15:45:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0045",
+        "fecha": "2025-09-14",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PRODUCTOS",
+        "tercero": "DISTRIBUIDORA ESTE S.A.",
+        "valorOperacion": 4800000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "INGRESO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-09-14T12:15:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0046",
+        "fecha": "2025-09-15",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES GLOBAL S.A.",
+        "valorOperacion": 2000000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura046.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-09-15T08:00:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-09-15T14:30:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0047",
+        "fecha": "2025-09-16",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PUBLICIDAD",
+        "tercero": "AGENCIA IMPACTO S.A.",
+        "valorOperacion": 3100000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": false,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "lramirez", "fecha": "2025-09-16T10:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0048",
+        "fecha": "2025-09-17",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "MANTENIMIENTO",
+        "tercero": "SERVICIOS FLOTA S.A.",
+        "valorOperacion": 1300000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "EFECTIVO",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura048.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "aperez", "fecha": "2025-09-17T08:45:00Z", "nota": "Creado" },
+            { "usuario": "aperez", "fecha": "2025-09-17T15:20:00Z", "nota": "Pago realizado" }
+        ]
+    },
+    {
+        "id": "P-0049",
+        "fecha": "2025-09-18",
+        "empresa": "COMERCIAL ABC",
+        "areaOperacion": "VENTAS",
+        "rubro": "PRODUCTOS",
+        "tercero": "CLIENTE REGIONAL S.A.S.",
+        "valorOperacion": 5500000,
+        "estadoPago": "PENDIENTE",
+        "ingresoOGasto": "INGRESO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": null,
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "joroa", "fecha": "2025-09-18T11:00:00Z", "nota": "Creado" }
+        ]
+    },
+    {
+        "id": "P-0050",
+        "fecha": "2025-09-19",
+        "empresa": "LOGISTICA XYZ",
+        "areaOperacion": "LOGISTICA",
+        "rubro": "FLETES",
+        "tercero": "TRANSPORTES EFICIENTES S.A.",
+        "valorOperacion": 2400000,
+        "estadoPago": "PAGADO",
+        "ingresoOGasto": "GASTO",
+        "formaPago": "TRANSFERENCIA",
+        "tienePresupuesto": true,
+        "facturaUrl": "https://example.com/factura050.pdf",
+        "soporteUrl": null,
+        "trazabilidad": [
+            { "usuario": "mgomez", "fecha": "2025-09-19T07:30:00Z", "nota": "Creado" },
+            { "usuario": "mgomez", "fecha": "2025-09-19T14:15:00Z", "nota": "Pago realizado" }
+        ]
+    }
+]
+    
