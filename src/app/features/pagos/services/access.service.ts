@@ -29,4 +29,28 @@ export class AccessService {
     
     return permisos.length > 0 ? permisos.join(' | ') : 'SIN PERMISOS';
   }
+
+   // NUEVO: Cambiar permisos
+  cambiarPermisos(solicitar: boolean, autorizar: boolean): void {
+    ACCESS.PAGOS.SOLICITAR = solicitar;
+    ACCESS.PAGOS.AUTORIZAR = autorizar;
+  }
+
+  // NUEVO: Roles rápidos
+  setRolAdmin(): void {
+    this.cambiarPermisos(true, true);
+  }
+
+  setRolSolicitante(): void {
+    this.cambiarPermisos(true, false);
+  }
+
+  setRolAutorizador(): void {
+    this.cambiarPermisos(false, true);
+  }
+
+  setRolSinPermisos(): void {
+    this.cambiarPermisos(false, false);
+  }
+
 }

@@ -6,5 +6,4 @@ export const routes: Routes = [
     { path: '', component: lista },
     { path: 'features/pago-list', component: lista },
     { path: 'features/pago-forms', component: forms }
-
 ];

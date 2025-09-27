@@ -43,13 +43,19 @@ formasPago = [
   { label: 'Transferencia', value: 'TRANSFERENCIA' },
   { label: 'Cheque', value: 'CHEQUE' }
 ];
+rolesDisponibles = [
+  { label: 'Admin', value: 'admin' },
+  { label: 'Solicitante', value: 'solicitante' },
+  { label: 'Autorizador', value: 'autorizador' },
+  { label: 'Sin Permisos', value: 'sinpermisos' }
+];
   constructor(private pagosService: PagosService,private accesService:AccessService) {}
 
   ngOnInit(): void {
     this.loader = true;
     this.pagosService.getPagos().subscribe({
       next: (data) => {
-        console.log('data', data);
+       // console.log('data', data);
         this.pagos = data;
         this.pagosFiltrados = [...data];
         this.empresasDisponibles = this.getEmpresasUnicas(data);
@@ -57,7 +63,7 @@ formasPago = [
 
       },
       error: (error) => {
-        console.error('Error fetching pagos:', error);
+     //   console.error('Error fetching pagos:', error);
         this.loader = false;
       }
     });
@@ -137,7 +143,7 @@ aplicarFiltrosColumna(): void {
 }
   AbrirModalEditar(pago: any): void {
     this.pagoSeleccionado = { ...pago }; 
-    console.log('Pago seleccionado para editar:', this.pagoSeleccionado);
+   // console.log('Pago seleccionado para editar:', this.pagoSeleccionado);
     this.ModalEditar = true;
   } 
   CerrarModalEditar(): void {
@@ -166,7 +172,7 @@ GuardarEdicion(): void {
   this.pagosService.getPagos().subscribe(data => {
     this.pagos = data;
     this.pagosFiltrados = [...data];
-    console.log('Pago actualizado:', this.pagoSeleccionado);
+   // console.log('Pago actualizado:', this.pagoSeleccionado);
     Swal.fire({
       icon: 'success',
       title: '¡Éxito!',
@@ -203,7 +209,7 @@ EliminarPago(pago: any): void {
 
 viewDetalle(pago: any): void {
     this.pagoSeleccionado = pago;
-    console.log('Pago seleccionado para detalle:', this.pagoSeleccionado);
+    //console.log('Pago seleccionado para detalle:', this.pagoSeleccionado);
     this.ModalDetalle = true;
   }
 CerrarModalDetalle(): void {
@@ -290,4 +296,25 @@ get puedeEliminarAutorizar(): boolean {
   get rolActivo(): string {
     return this.accesService.getRolActivo();
   }
+
+
+  
+  
+
+cambiarRol(rol: string): void {
+  switch(rol) {
+    case 'admin':
+      this.accesService.setRolAdmin();
+      break;
+    case 'solicitante':
+      this.accesService.setRolSolicitante();
+      break;
+    case 'autorizador':
+      this.accesService.setRolAutorizador();
+      break;
+    case 'sinpermisos':
+      this.accesService.setRolSinPermisos();
+      break;
+  }
+}
 } 
