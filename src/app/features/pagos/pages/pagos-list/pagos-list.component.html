@@ -1,405 +1,420 @@
-<div class="p-6 bg-gray-100 min-h-screen max-w-7xl mx-auto">
-  <!-- HEADER PRINCIPAL -->
-  <div class="flex justify-between items-center mb-6">
-    <div>
-      <h1 class="text-2xl font-bold text-gray-900">Pagos</h1>
-      <p class="text-gray-600 mt-1">Lista de pagos</p>
-    </div>
-    <button *ngIf="puedeCrearPago" 
-      pButton type="button" label="Nuevo Pago" icon="pi pi-plus" 
-            routerLink="/features/pago-forms" 
-            class="p-button-primary">
-    </button>
-  </div>
-<div class="mb-6 flex justify-between items-center">
-  <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-    <i class="pi pi-user"></i>
-    <span>Rol: {{ rolActivo }}</span>
-  </div>
+<div class="max-w-7xl mx-auto p-4 lg:p-6 space-y-6 lg:space-y-8 bg-gray-50 min-h-screen">
   
-  <p-dropdown 
-    [options]="rolesDisponibles" 
-    placeholder="Cambiar Rol"
-    optionLabel="label" 
-    optionValue="value"
-    (onChange)="cambiarRol($event.value)"
-    [style]="{'min-width': '180px'}"
-    styleClass="p-dropdown-sm">
-  </p-dropdown>
-</div>
-<div class="bg-white rounded-xl shadow-sm border border-gray-100 mb-6">
-  
-  <div class="bg-gray-50 px-6 py-4 border-b border-gray-100">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <h3 class="text-lg font-semibold text-gray-800">Buscar Pagos</h3>
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 lg:p-6">
+    <!-- Título principal -->
+    <div class="mb-4">
+      <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">Pagos</h1>
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-600">
+        <span>Lista de pagos registrados</span>
+        <div class="flex items-center gap-2 bg-blue-50 px-3 py-1 rounded-full w-fit">
+          <i class="pi pi-user text-blue-600"></i>
+          <span class="font-medium text-blue-800">Rol: {{ rolActivo }}</span>
+        </div>
       </div>
-      <span class="text-sm text-gray-500 bg-white px-3 py-1 rounded-full">
-        {{ pagosFiltrados.length }} resultados
-      </span>
-    </div>
-  </div>
-<div class="p-6 space-y-6">
-  
-  <div class="relative">
-    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-      <i class="pi pi-search text-gray-400 text-lg"></i>
-    </div>
-    <input pInputText type="text" 
-            (input)="buscarGeneral($event)" 
-            placeholder="Buscar por empresa, tercero, área o rubro..." 
-            class="w-135 pl-12 pr-4 py-4 text-lg border border-gray-200 rounded-xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-all duration-200 placeholder-gray-400" />
-  </div>
-  <div class="flex items-center gap-4">
-    <div class="flex-1 h-px bg-gray-200"></div>
-    <span class="text-sm text-gray-500 font-medium">Filtros específicos</span>
-    <div class="flex-1 h-px bg-gray-200"></div>
-  </div>
-
-  <div class="flex flex-col sm:flex-row gap-4">
-    
-    <div class="flex-1">
-      <label class="block text-sm font-medium text-gray-600 mb-2">
-        <i class="pi pi-filter text-blue-500 mr-1"></i>
-        Estados
-      </label>
-      <p-multiSelect 
-        [(ngModel)]="estadosSeleccionados"
-        [options]="estados"
-        placeholder="Seleccionar estados..."
-        class="w-full"
-        (onChange)="aplicarFiltrosColumna()"
-        styleClass="custom-multiselect">
-      </p-multiSelect>
     </div>
     
- <!-- Filtro de Empresa -->
-<div class="flex-1">
-  <label class="block text-sm font-medium text-gray-600 mb-2">
-    <i class="pi pi-building text-blue-500 mr-1"></i>
-    Empresa
-  </label>
-  <p-dropdown 
-    [(ngModel)]="empresaSeleccionada"
-    [options]="empresasDisponibles"
-    placeholder="Seleccionar empresa..."
-    [showClear]="true"
-    [filter]="true"
-    filterBy="label"
-    class="w-full"
-    (onChange)="aplicarFiltrosColumna()">
-  </p-dropdown>
-</div>
-  </div>
-
-  <div class="flex items-center gap-4">
-    <div class="flex-1 h-px bg-gray-200"></div>
-    <span class="text-sm text-gray-500 font-medium">Filtrar por fecha</span>
-    <div class="flex-1 h-px bg-gray-200"></div>
-  </div>
-
-  <div class="flex flex-col sm:flex-row gap-4">
-    
-    <!-- Fecha desde -->
-    <div class="flex-1">
-      <label class="block text-sm font-medium text-gray-600 mb-2">
-        <i class="pi pi-calendar text-blue-500 mr-1"></i>
-        Desde
-      </label>
-      <p-calendar [(ngModel)]="fechaDesde" 
-                  dateFormat="dd/mm/yy"
-                  placeholder="Seleccionar fecha"
-                  class="w-full"
-                  [showIcon]="true"
-                  [appendTo]="'body'"
-                  [inputStyle]="{'padding': '12px 16px', 'border': '1px solid #d1d5db', 'border-radius': '12px', 'background': '#f9fafb', 'font-size': '14px'}">
-      </p-calendar>
-    </div>
-    
-    <!-- Fecha hasta -->
-    <div class="flex-1">
-      <label class="block text-sm font-medium text-gray-600 mb-2">
-        <i class="pi pi-calendar text-blue-500 mr-1"></i>
-        Hasta
-      </label>
-      <p-calendar [(ngModel)]="fechaHasta" 
-                  dateFormat="dd/mm/yy"
-                  placeholder="Seleccionar fecha"
-                  class="w-full"
-                  [showIcon]="true"
-                  [appendTo]="'body'"
-                  [inputStyle]="{'padding': '12px 16px', 'border': '1px solid #d1d5db', 'border-radius': '12px', 'background': '#f9fafb', 'font-size': '14px'}">
-      </p-calendar>
-    </div>
-  </div>
-
-  <div class="flex flex-col sm:flex-row gap-3 justify-center sm:justify-end">
-    <button pButton type="button" 
-            (click)="filtrarPorFecha()"
-            class="bg-blue-600 hover:bg-blue-700 hover:scale-105 text-white px-6 py-3 rounded-xl font-medium shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center gap-2">
-      <i class="pi pi-check text-sm"></i>
-      Aplicar
-    </button>
-    <button pButton type="button" 
-            (click)="limpiarFiltros()"
-            class="bg-gray-100 hover:bg-gray-200 hover:scale-105 text-gray-700 px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2">
-      <i class="pi pi-refresh text-sm"></i>
-      Limpiar
-    </button>
-    <button pButton type="button" 
-            (click)="exportarCSV()"
-            class="bg-gray-100 hover:bg-gray-200 hover:scale-105 text-gray-700 px-6 py-3 rounded-xl font-medium transition-all duration-200 flex items-center justify-center gap-2">
-      <i class="pi pi-download"></i>
-      Exportar
-    </button>
-  </div>
-</div>
-
-
-
-<div class="bg-white rounded-xl shadow-sm border border-gray-100">
-  
-  <div class="bg-gradient-to-r from-gray-50 to-blue-50 px-6 py-4 border-b border-gray-200 rounded-t-xl">
-    <div class="flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-          <i class="pi pi-list text-blue-600"></i>
-        </div>
-        <div>
-          <h3 class="text-lg font-semibold text-gray-800">Resultados</h3>
-          <p class="text-sm text-gray-500">{{ pagosFiltrados.length }} registros encontrados</p>
-        </div>
+    <div class="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <!-- Dropdown de roles -->
+      <div class="order-2 sm:order-1">
+        <p-dropdown 
+          [options]="rolesDisponibles" 
+          placeholder="Cambiar Rol"
+          optionLabel="label" 
+          optionValue="value"
+          (onChange)="cambiarRol($event.value)"
+          [style]="{'min-width': '180px', 'width': '100%'}"
+          styleClass="p-dropdown-sm w-full sm:w-auto">
+        </p-dropdown>
       </div>
       
-      <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-xl shadow-sm">
-        <div class="text-center">
-          <div class="text-xs font-medium opacity-90">Total</div>
-          <div class="text-lg font-bold">{{ totalValor | currency:'COP':'symbol':'1.0-0' }}</div>
+      <div class="order-1 sm:order-2">
+  <button *ngIf="puedeCrearPago" 
+    pButton 
+    type="button" 
+    label="Nuevo Pago" 
+    icon="pi pi-plus" 
+    routerLink="/features/pago-forms" 
+    class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold rounded-lg p-2 transition-colors">
+  </button>
+</div>
+
+    </div>
+  </div>
+
+  <!-- BARRA DE BÚSQUEDA PRINCIPAL -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 lg:p-6">
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+        <i class="pi pi-search text-gray-400"></i>
+      </div>
+      <input 
+        pInputText 
+        type="text" 
+        (input)="buscarGeneral($event)"
+        placeholder="Buscar por empresa, tercero, área o rubro..." 
+        class="w-full pl-12 pr-4 py-3 lg:py-4 text-base lg:text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+      />
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow-sm border border-gray-200">
+    <button 
+      class="w-full px-4 lg:px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors" 
+      (click)="toggleFiltros()"
+      type="button">
+      <div class="flex items-center gap-3">
+        <i class="pi pi-filter text-gray-500"></i>
+        <span class="font-medium text-gray-700">Filtros avanzados</span>
+      </div>
+      <i class="pi pi-chevron-down text-gray-400 transform transition-transform" 
+          [class.rotate-180]="filtrosAbiertos"></i>
+    </button>
+    
+    <div class="border-t border-gray-100 p-4 lg:p-6 space-y-4 lg:space-y-6" [hidden]="!filtrosAbiertos">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Estados</label>
+          <p-multiSelect 
+            [(ngModel)]="estadosSeleccionados"
+            [options]="estados"
+            placeholder="Seleccionar estados..."
+            class="w-full"
+            (onChange)="aplicarFiltrosColumna()"
+            styleClass="custom-multiselect">
+          </p-multiSelect>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
+          <p-dropdown 
+            [(ngModel)]="empresaSeleccionada"
+            [options]="empresasDisponibles"
+            placeholder="Seleccionar empresa..."
+            [showClear]="true"
+            [filter]="true"
+            filterBy="label"
+            class="w-full"
+            (onChange)="aplicarFiltrosColumna()">
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Fecha desde</label>
+          <p-calendar 
+            [(ngModel)]="fechaDesde" 
+            dateFormat="dd/mm/yy"
+            placeholder="Seleccionar fecha"
+            class="w-full"
+            [showIcon]="true"
+            [appendTo]="'body'">
+          </p-calendar>
+        </div>
+        
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Fecha hasta</label>
+          <p-calendar 
+            [(ngModel)]="fechaHasta" 
+            dateFormat="dd/mm/yy"
+            placeholder="Seleccionar fecha"
+            class="w-full"
+            [showIcon]="true"
+            [appendTo]="'body'">
+          </p-calendar>
+        </div>
+      </div>
+
+      <!-- Botones de acción responsive -->
+      <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200">
+  <!-- Botón Aplicar filtros -->
+  <button 
+    pButton 
+    type="button" 
+    (click)="filtrarPorFecha()"
+    class="bg-blue-500 hover:bg-blue-600 text-white font-medium w-full sm:w-auto rounded-lg p-2 transition-colors">
+    Aplicar filtros de fecha
+  </button>
+
+  <!-- Botón Limpiar -->
+  <button 
+    pButton 
+    type="button" 
+    (click)="limpiarFiltros()"
+    class="border border-gray-300 hover:border-gray-400 hover:bg-gray-50 text-gray-700 font-medium w-full sm:w-auto rounded-lg p-2 transition-colors">
+    Limpiar
+  </button>
+
+  <!-- Botón Exportar -->
+ 
+</div>
+
+    </div>
+  </div>
+
+  <!-- RESUMEN Y RESULTADOS RESPONSIVE -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 lg:p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600">Total registros</p>
+          <p class="text-xl lg:text-2xl font-bold text-gray-900">{{ pagosFiltrados.length }}</p>
+        </div>
+        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+          <i class="pi pi-list text-blue-600 text-sm lg:text-base"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 lg:p-6">
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="text-sm font-medium text-gray-600">Pagos pendientes</p>
+          <p class="text-xl lg:text-2xl font-bold text-yellow-600">{{ contarPorEstado('PENDIENTE') }}</p>
+        </div>
+        <div class="w-10 h-10 lg:w-12 lg:h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+          <i class="pi pi-clock text-yellow-600 text-sm lg:text-base"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm border border-gray-200 sm:col-span-2 lg:col-span-1">
+      <div class="p-4 lg:p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-sm font-medium text-gray-600">Total valor</p>
+            <p class="text-xl lg:text-2xl font-bold text-green-600">{{ totalValor | currency:'COP':'symbol':'1.0-0' }}</p>
+          </div>
+          <div class="w-10 h-10 lg:w-12 lg:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+            <i class="pi pi-dollar text-green-600 text-sm lg:text-base"></i>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="w-full">
-    <p-table #dt 
-              [value]="pagosFiltrados" 
-              [paginator]="true" 
-              [rows]="12" 
-              [rowsPerPageOptions]="[10,20,50]"
-              [showCurrentPageReport]="true"
-              styleClass="p-datatable-striped">
-      <ng-template pTemplate="header">
-        <tr class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
-          
-          <th class="px-3 py-4 font-semibold text-sm w-24" pSortableColumn="fecha">
-            <div class="flex items-center gap-1">
-              <i class="pi pi-calendar text-xs"></i>
+  <!-- TABLA SIMPLIFICADA -->
+  <!-- Header de tabla -->
+<div class="px-6 py-4 border-b border-gray-200">
+  <div class="flex items-center justify-between">
+    
+    <!-- Título -->
+    <h3 class="text-lg font-semibold text-gray-900">Resultados</h3>
+
+    <!-- Contador + botón Exportar -->
+    <div class="flex items-center gap-4">
+      <span class="text-sm text-gray-600">{{ pagosFiltrados.length }} registros encontrados</span>
+      <button 
+        pButton 
+        type="button" 
+        (click)="exportarCSV()"
+        class="bg-green-500 hover:bg-green-600 text-white font-medium rounded-lg p-2 flex items-center justify-center transition-colors">
+        <i class="pi pi-download mr-2"></i>
+        Exportar
+      </button>
+    </div>
+
+  </div>
+</div>
+
+
+    <!-- Tabla responsive -->
+    <div class="w-full">
+      <p-table 
+        #dt 
+        [value]="pagosFiltrados" 
+        [paginator]="true" 
+        [rows]="12" 
+        [rowsPerPageOptions]="[10,20,50]"
+        [showCurrentPageReport]="true"
+        styleClass="p-datatable-striped">
+        
+        <ng-template pTemplate="header">
+          <tr class="bg-gray-50">
+            <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" pSortableColumn="fecha">
               Fecha
               <p-sortIcon field="fecha"></p-sortIcon>
-            </div>
-          </th>
-          
-          <th class="px-3 py-4 font-semibold text-sm" pSortableColumn="empresa">
-            <div class="flex items-center gap-1">
-              <i class="pi pi-building text-xs"></i>
-              Empresa
+            </th>
+            <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" pSortableColumn="empresa">
+              Empresa / Tercero
               <p-sortIcon field="empresa"></p-sortIcon>
-            </div>
-          </th>
-          
-          <th class="px-3 py-4 font-semibold text-sm w-40">
-            <div class="flex items-center gap-1">
-              <i class="pi pi-sitemap text-xs"></i>
+            </th>
+            <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Área / Rubro
-            </div>
-          </th>
-          
-          <th class="px-3 py-4 font-semibold text-sm" pSortableColumn="tercero">
-            <div class="flex items-center gap-1">
-              <i class="pi pi-user text-xs"></i>
-              Tercero
-              <p-sortIcon field="tercero"></p-sortIcon>
-            </div>
-          </th>
-          
-          <th class="px-3 py-4 font-semibold text-sm text-right w-32" pSortableColumn="valorOperacion">
-            <div class="flex items-center justify-end gap-1">
-              <i class="pi pi-dollar text-xs"></i>
+            </th>
+            <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider" pSortableColumn="valorOperacion">
               Valor
               <p-sortIcon field="valorOperacion"></p-sortIcon>
-            </div>
-          </th>
-          
-          <th class="px-3 py-4 font-semibold text-sm text-center w-36">
-            <div class="flex items-center justify-center gap-1">
-              <i class="pi pi-info-circle text-xs"></i>
-              Estado / Pago
-            </div>
-          </th>
-          
-          <th class="px-3 py-4 font-semibold text-sm text-center w-24">
-            <i class="pi pi-cog text-xs"></i>
-          </th>
-        </tr>
-      </ng-template>
+            </th>
+            <th class="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Estado
+            </th>
+            <th class="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Acciones
+            </th>
+          </tr>
+        </ng-template>
 
-      <ng-template pTemplate="body" let-pago let-rowIndex="rowIndex">
-        <tr class="hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-200 border-b border-gray-100">
-          
-          <td class="px-3 py-3">
-            <div class="text-sm font-medium text-gray-700">
-              {{ pago.fecha | date:'dd/MM' }}
-            </div>
-            <div class="text-xs text-gray-500">
-              {{ pago.fecha | date:'yyyy' }}
-            </div>
-          </td>
-          
-          <td class="px-3 py-3">
-            <div class="font-semibold text-gray-900 text-sm leading-tight">
-              {{ pago.empresa }}
-            </div>
-          </td>
-          
-          <td class="px-3 py-3">
-            <div class="text-sm text-gray-700 font-medium">
-              {{ pago.areaOperacion }}
-            </div>
-            <div class="text-xs text-gray-500 mt-1 bg-gray-100 px-2 py-1 rounded inline-block">
-              {{ pago.rubro }}
-            </div>
-          </td>
-          
-          <td class="px-3 py-3">
-            <div class="text-sm font-medium text-gray-900 truncate" [title]="pago.tercero">
-              {{ pago.tercero }}
-            </div>
-          </td>
-          
-          <td class="px-3 py-3 text-right">
-            <div class="font-bold text-sm text-gray-900 bg-gradient-to-r from-green-50 to-emerald-50 px-2 py-1 rounded-lg inline-block">
-              {{ pago.valorOperacion | currency:'COP':'symbol':'1.0-0' }}
-            </div>
-          </td>
-          
-          <td class="px-3 py-3 text-center">
-            <div class="mb-1">
-              <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold"
+        <ng-template pTemplate="body" let-pago let-rowIndex="rowIndex">
+          <tr class="hover:bg-gray-50 transition-colors border-b border-gray-100">
+            
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm font-medium text-gray-900">{{ pago.fecha | date:'dd/MM/yyyy' }}</div>
+              <div class="text-xs text-gray-500">{{ pago.fecha | date:'EEEE' }}</div>
+            </td>
+            
+            <td class="px-6 py-4">
+              <div class="text-sm font-medium text-gray-900">{{ pago.empresa }}</div>
+              <div class="text-xs text-gray-500">{{ pago.tercero }}</div>
+            </td>
+            
+            <td class="px-6 py-4">
+              <div class="text-sm text-gray-900">{{ pago.areaOperacion }}</div>
+              <div class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full inline-block mt-1">
+                {{ pago.rubro }}
+              </div>
+            </td>
+            
+            <td class="px-6 py-4 text-right whitespace-nowrap">
+              <div class="text-sm font-semibold text-gray-900">{{ pago.valorOperacion | currency:'COP':'symbol':'1.0-0' }}</div>
+            </td>
+            
+            <td class="px-6 py-4 text-center whitespace-nowrap">
+              <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full"
                     [ngClass]="{
-                      'bg-yellow-100 text-yellow-800 border border-yellow-200': pago.estadoPago === 'PENDIENTE',
-                      'bg-green-100 text-green-800 border border-green-200': pago.estadoPago === 'PAGADO',
-                      'bg-blue-100 text-blue-800 border border-blue-200': pago.estadoPago === 'AUTORIZADO'
+                      'bg-yellow-100 text-yellow-800': pago.estadoPago === 'PENDIENTE',
+                      'bg-green-100 text-green-800': pago.estadoPago === 'PAGADO',
+                      'bg-blue-100 text-blue-800': pago.estadoPago === 'AUTORIZADO'
                     }">
-                <i class="pi text-xs"
-                    [ngClass]="{
-                      'pi-clock': pago.estadoPago === 'PENDIENTE',
-                      'pi-check': pago.estadoPago === 'PAGADO',
-                      'pi-shield': pago.estadoPago === 'AUTORIZADO'
-                    }"></i>
                 {{ pago.estadoPago }}
               </span>
-            </div>
-            <div class="text-xs text-gray-600 bg-gray-50 px-2 py-1 rounded truncate">
-              {{ pago.formaPago }}
-            </div>
-          </td>
-          
-          <td class="px-3 py-3">
-            <div class="flex flex-col gap-1 items-center">
-              
-              <button pButton type="button" 
-                      (click)="viewDetalle(pago)"
-                      class="w-7 h-7 hover:bg-blue-200 text-black rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:scale-105 flex items-center justify-center p-0"
-                      pTooltip="Ver detalles" tooltipPosition="left">
-                <i class="pi pi-eye text-xs"></i>
-              </button>
-              
-              <button *ngIf="puedeEliminarAutorizar"
-                pButton type="button" 
-                      (click)="AbrirModalEditar(pago)"
-                      class="w-7 h-7 hover:bg-amber-200 text-black rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:scale-105 flex items-center justify-center p-0"
-                      pTooltip="Editar" tooltipPosition="left">
-                <i class="pi pi-pencil text-xs"></i>
-              </button>
-              
-              <button *ngIf="puedeEliminarAutorizar" 
-                      pButton type="button" 
-                      (click)="EliminarPago(pago)"
-                      class="w-7 h-7  hover:bg-red-200 text-black rounded-lg shadow-sm hover:shadow-md transition-all duration-200 transform hover:scale-105 flex items-center justify-center p-0"
-                      pTooltip="Eliminar" tooltipPosition="left">
-                <i class="pi pi-trash text-xs"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </ng-template>
-      
-     
-    </p-table>
+              <div class="text-xs text-gray-500 mt-1">{{ pago.formaPago }}</div>
+            </td>
+            
+            <td class="px-6 py-4 text-center whitespace-nowrap">
+              <div class="flex justify-center gap-2">
+                <button 
+                  pButton 
+                  type="button" 
+                  (click)="viewDetalle(pago)"
+                  class="p-button-text p-button-sm text-blue-600 hover:text-blue-800"
+                  pTooltip="Ver detalles" 
+                  tooltipPosition="left">
+                  <i class="pi pi-eye"></i>
+                </button>
+                
+                <button 
+                  *ngIf="puedeEliminarAutorizar"
+                  pButton 
+                  type="button" 
+                  (click)="AbrirModalEditar(pago)"
+                  class="p-button-text p-button-sm text-gray-600 hover:text-gray-800"
+                  pTooltip="Editar" 
+                  tooltipPosition="left">
+                  <i class="pi pi-pencil"></i>
+                </button>
+                
+                <button 
+                  *ngIf="puedeEliminarAutorizar" 
+                  pButton 
+                  type="button" 
+                  (click)="EliminarPago(pago)"
+                  class="p-button-text p-button-sm text-red-600 hover:text-red-800"
+                  pTooltip="Eliminar" 
+                  tooltipPosition="left">
+                  <i class="pi pi-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
   </div>
-</div>
 
+
+<!-- MODAL EDITAR -->
 <div *ngIf="ModalEditar" class="fixed inset-0 flex items-center justify-center bg-gray-900/50 z-50 px-4">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6 mx-auto transform transition-all duration-300 hover:shadow-3xl">
-    <h3 class="text-2xl font-bold text-blue-800 mb-6 text-center border-b-2 border-blue-200 pb-2">Editar Pago</h3>
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-6 mx-auto transform transition-all duration-300">
+    <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center border-b border-gray-200 pb-4">Editar Pago</h3>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Fecha</label>
-        <p-calendar [(ngModel)]="pagoSeleccionado.fecha" dateFormat="dd/mm/yy" [showIcon]="true" class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500"></p-calendar>
+        <p-calendar 
+          [(ngModel)]="pagoSeleccionado.fecha" 
+          dateFormat="dd/mm/yy" 
+          [showIcon]="true" 
+          class="w-full">
+        </p-calendar>
       </div>
 
-      <!-- Empresa -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Empresa</label>
-        <input pInputText [(ngModel)]="pagoSeleccionado.empresa" class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500" />
+        <input pInputText [(ngModel)]="pagoSeleccionado.empresa" class="w-full" />
       </div>
 
-      <!-- Área -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Área</label>
-        <input pInputText [(ngModel)]="pagoSeleccionado.areaOperacion" class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500" />
+        <input pInputText [(ngModel)]="pagoSeleccionado.areaOperacion" class="w-full" />
       </div>
 
-      <!-- Rubro -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Rubro</label>
-        <input pInputText [(ngModel)]="pagoSeleccionado.rubro" class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500" />
+        <input pInputText [(ngModel)]="pagoSeleccionado.rubro" class="w-full" />
       </div>
 
-      <!-- Tercero -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Tercero</label>
-        <input pInputText [(ngModel)]="pagoSeleccionado.tercero" class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500" />
+        <input pInputText [(ngModel)]="pagoSeleccionado.tercero" class="w-full" />
       </div>
 
-      <!-- Valor -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Valor</label>
-        <input pInputText type="number" [(ngModel)]="pagoSeleccionado.valorOperacion" class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500" />
+        <input pInputText type="number" [(ngModel)]="pagoSeleccionado.valorOperacion" class="w-full" />
       </div>
 
-      <!-- Estado Pago -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Estado Pago</label>
-        <p-dropdown [(ngModel)]="pagoSeleccionado.estadoPago"
-                    [options]="estados"
-                    placeholder="Selecciona estado"
-                    class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500"></p-dropdown>
+        <p-dropdown 
+          [(ngModel)]="pagoSeleccionado.estadoPago"
+          [options]="estados"
+          placeholder="Selecciona estado"
+          class="w-full">
+        </p-dropdown>
       </div>
+      
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-2">Forma Pago</label>
-        <p-dropdown [(ngModel)]="pagoSeleccionado.formaPago"
-                    [options]="formasPago"
-                    placeholder="Selecciona forma de pago"
-                    class="w-full rounded-lg border-gray-300 p-2 focus:ring-2 focus:ring-blue-500"></p-dropdown>
+        <p-dropdown 
+          [(ngModel)]="pagoSeleccionado.formaPago"
+          [options]="formasPago"
+          placeholder="Selecciona forma de pago"
+          class="w-full">
+        </p-dropdown>
       </div>
     </div>
-    <div class="flex justify-end gap-4 mt-8">
-      <button pButton label="Cancelar" class="p-button-outlined bg-red-100 text-red-600 hover:bg-red-200 rounded-lg px-6 py-2 transition-colors" (click)="CerrarModalEditar()"></button>
-      <button pButton label="Guardar" class="p-button-success bg-green-600 text-white hover:bg-green-700 rounded-lg px-6 py-2 transition-colors" (click)="GuardarEdicion()"></button>
+    
+    <div class="flex justify-end gap-4 mt-8 pt-6 border-t border-gray-200">
+      <button 
+        pButton 
+        type="button"
+        label="Cancelar" 
+        class="p-button-outlined" 
+        (click)="CerrarModalEditar()">
+      </button>
+      <button 
+        pButton 
+        type="button"
+        label="Guardar" 
+        class="p-button-success" 
+        (click)="GuardarEdicion()">
+      </button>
     </div>
   </div>
 </div>
+
+<!-- MODAL DETALLE -->
 <div *ngIf="ModalDetalle" 
     class="fixed inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm z-50 px-4">
   
@@ -413,7 +428,7 @@
           </div>
           <h3 class="text-2xl font-bold">Detalles del Pago</h3>
         </div>
-                <button 
+        <button 
           class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
           (click)="CerrarModalDetalle()">
           <i class="pi pi-times text-sm"></i>
@@ -421,7 +436,6 @@
       </div>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <div class="p-8">
       
       <!-- Estado del Pago (Destacado) -->
@@ -442,10 +456,8 @@
         </div>
       </div>
 
-      <!-- Grid de Información -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <!-- Fecha -->
         <div class="group">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -454,11 +466,10 @@
             <label class="text-sm font-semibold text-gray-700">Fecha</label>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-blue-500 group-hover:bg-blue-50 transition-colors">
-            <p class="text-gray-800 font-medium">{{ pagoSeleccionado.fecha }}</p>
+            <p class="text-gray-800 font-medium">{{ pagoSeleccionado.fecha | date:'dd/MM/yyyy' }}</p>
           </div>
         </div>
 
-        <!-- Valor -->
         <div class="group">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
@@ -467,11 +478,10 @@
             <label class="text-sm font-semibold text-gray-700">Valor</label>
           </div>
           <div class="bg-gray-50 rounded-xl p-4 border-l-4 border-green-500 group-hover:bg-green-50 transition-colors">
-            <p class="text-gray-800 font-bold text-lg">{{ pagoSeleccionado.valorOperacion | currency:'COP' }}</p>
+            <p class="text-gray-800 font-bold text-lg">{{ pagoSeleccionado.valorOperacion | currency:'COP':'symbol':'1.0-0' }}</p>
           </div>
         </div>
 
-        <!-- Empresa -->
         <div class="group">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -484,7 +494,6 @@
           </div>
         </div>
 
-        <!-- Área de Operación -->
         <div class="group">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
@@ -497,7 +506,6 @@
           </div>
         </div>
 
-        <!-- Rubro -->
         <div class="group">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
@@ -510,7 +518,6 @@
           </div>
         </div>
 
-        <!-- Tercero -->
         <div class="group">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center">
@@ -523,7 +530,6 @@
           </div>
         </div>
 
-        <!-- Forma de Pago (Ancho completo) -->
         <div class="group md:col-span-2">
           <div class="flex items-center space-x-2 mb-3">
             <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center">
@@ -539,7 +545,6 @@
       </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="bg-gray-50 rounded-b-3xl px-8 py-6 border-t border-gray-100">
       <div class="flex justify-end space-x-4">
         <button 

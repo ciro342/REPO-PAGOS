@@ -49,6 +49,8 @@ rolesDisponibles = [
   { label: 'Autorizador', value: 'autorizador' },
   { label: 'Sin Permisos', value: 'sinpermisos' }
 ];
+filtrosAbiertos: boolean = false;
+contadorFiltrosActivos: number = 0;
   constructor(private pagosService: PagosService,private accesService:AccessService) {}
 
   ngOnInit(): void {
@@ -76,7 +78,13 @@ rolesDisponibles = [
     value: empresa
   }));
   }
+toggleFiltros() {
+  this.filtrosAbiertos = !this.filtrosAbiertos;
+}
 
+contarPorEstado(estado: string): number {
+  return this.pagosFiltrados.filter(p => p.estadoPago === estado).length;
+}
   get totalValor(): number {
     return this.pagosFiltrados.reduce((acc, p) => acc + p.valorOperacion, 0);
   }
