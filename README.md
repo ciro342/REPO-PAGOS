@@ -51,6 +51,9 @@ src/
 ├── pagos.service.spec.ts
 ├── access.service.ts       →     Servicio para control de accesos/permisos
 └── access.service.spec.ts
+└── guards/
+    ├── pago.guard.ts
+    └── pago.guard.spec.ts
 
 ## POR MEJORAR
 -Uso de trackBy en tabla
@@ -62,3 +65,17 @@ npm i primeng primeicons
 
 ## para subir a github pages
 npm install -g angular-cli-ghpages
+
+
+
+## GUARDS
+Los guards protegen las rutas para que solo usuarios con permisos puedan acceder a ciertas páginas.
+Si un usuario sin permisos trata de entrar a una URL protegida (como /features/pago-forms), será redirigido automáticamente a la página principal y verá una alerta de "Acceso Denegado".
+
+
+## Uso de IA
+
+Eh Usado la ia copilot en partes relacionadas a primeng (sigo en ruta de aprendizaje del mismo), pero bajo vigilancia
+para que no de algun error o mal resultado
+
+Tambien en la parte del export del csv (estoy mas acostumbrado a hacerlo desde el backend )

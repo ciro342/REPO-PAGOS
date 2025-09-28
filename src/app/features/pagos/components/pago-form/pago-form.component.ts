@@ -12,7 +12,6 @@ import { PagosService } from '../../services/pagos.service';
 import { RouterModule } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { AccessService } from '../../services/access.service';
 @Component({
   selector: 'app-pago-form',
   standalone: true,
@@ -47,7 +46,10 @@ formasPago = [
   { label: 'Cheque', value: 'CHEQUE' }
 ];
 
-  constructor(private fb: FormBuilder,private pagosService:PagosService,private router:Router,private accesService:AccessService) { }
+  constructor(private fb: FormBuilder,
+    private pagosService:PagosService,
+    private router:Router,
+) { }
   
   volver(): void {
   this.router.navigate(['features/pago-list']);
@@ -94,10 +96,8 @@ this.pagoForm = this.fb.group({
     }
   }
 
-  
-get puedeCrearPago(): boolean {
-  return this.accesService.puedeCrearPago();
-}
+
+
 
 
 }

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 export const ACCESS = {
   PAGOS: { 
-    SOLICITAR: true, 
-    AUTORIZAR: true, 
+    SOLICITAR: false, 
+    AUTORIZAR: false, 
   }
 };
 
